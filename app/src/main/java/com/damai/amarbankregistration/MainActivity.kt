@@ -1,6 +1,8 @@
 package com.damai.amarbankregistration
 
 import android.os.Bundle
+import android.util.Log
+import androidx.activity.addCallback
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.damai.amarbankregistration.application.MyApplication
@@ -29,12 +31,28 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         initFirstPage()
     }
 
+    override fun ActivityMainBinding.setupListeners() {
+        onBackPressedDispatcher.addCallback(lifecycleOwner) {
+            handleBackPress()
+        }
+    }
+
     //region Private Functions
     private fun initFirstPage() {
         registrationFeatureApi.navigateToSelfDataFragment(
             fragmentActivity = this,
             container = R.id.flMainContent
         )
+    }
+
+    private fun handleBackPress() {
+        with(supportFragmentManager) {
+            if (backStackEntryCount == 0) {
+                finish()
+            } else {
+                popBackStack()
+            }
+        }
     }
     //endregion `Private Functions`
 }

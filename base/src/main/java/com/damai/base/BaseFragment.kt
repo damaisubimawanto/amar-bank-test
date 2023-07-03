@@ -38,6 +38,7 @@ abstract class BaseFragment<VB: ViewDataBinding, VM: ViewModel> : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewInitialization()
+        binding.setupListeners()
         binding.onPreparationFinished()
     }
 
@@ -50,5 +51,7 @@ abstract class BaseFragment<VB: ViewDataBinding, VM: ViewModel> : Fragment() {
     open fun VB.viewInitialization() {}
 
     open fun VB.onPreparationFinished() {}
+
+    open fun VB.setupListeners() {}
     //endregion `Optional implementation`
 }

@@ -17,11 +17,10 @@ class RegistrationFeatureApiImpl @Inject constructor(
 ) : RegistrationFeatureApi {
 
     override fun navigateToSelfDataFragment(fragmentActivity: FragmentActivity, container: Int) {
-        appNavigation.pushAddFragment(
+        appNavigation.pushFragmentClearBackStack(
             fragmentManager = fragmentActivity.supportFragmentManager,
             containerId = container,
-            fragment = SelfDataFragment(),
-            fragmentTag = SelfDataFragment::class.java.simpleName
+            fragment = SelfDataFragment()
         )
     }
 

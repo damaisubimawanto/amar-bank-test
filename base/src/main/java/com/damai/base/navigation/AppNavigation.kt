@@ -10,6 +10,15 @@ import androidx.fragment.app.FragmentManager
 interface AppNavigation {
 
     /**
+     * Push a fragment to [FragmentManager] by clearing all the backstack
+     */
+    fun pushFragmentClearBackStack(
+        fragmentManager: FragmentManager,
+        @IdRes containerId: Int,
+        fragment: Fragment
+    )
+
+    /**
      * Push a fragment to [FragmentManager] using [FragmentTransaction.add] if added into backstack previous
      * fragment will be resumed [Fragment.onResume]
      *

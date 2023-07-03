@@ -13,6 +13,17 @@ import javax.inject.Singleton
 @Singleton
 class AppNavigationImpl @Inject constructor() : AppNavigation {
 
+    override fun pushFragmentClearBackStack(
+        fragmentManager: FragmentManager,
+        containerId: Int,
+        fragment: Fragment
+    ) = with(fragmentManager) {
+        commit {
+            if (fragments.isNotEmpty()) fragments.forEach { detach(it) }
+            replace(containerId, fragment)
+        }
+    }
+
     override fun pushAddFragment(
         fragmentManager: FragmentManager,
         containerId: Int,

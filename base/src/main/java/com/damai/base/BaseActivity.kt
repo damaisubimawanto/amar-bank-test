@@ -21,10 +21,15 @@ abstract class BaseActivity<VB: ViewDataBinding, VM: ViewModel> : AppCompatActiv
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = DataBindingUtil.setContentView(this, layoutResource)
+        binding.setupListeners()
     }
 
     override fun onDestroy() {
         _binding = null
         super.onDestroy()
     }
+
+    //region Optional implementation
+    open fun VB.setupListeners() {}
+    //endregion `Optional implementation`
 }
