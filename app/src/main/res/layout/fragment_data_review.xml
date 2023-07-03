@@ -4,15 +4,31 @@
     <data>
 
         <variable
+            name="selfDataModel"
+            type="com.damai.domain.models.SelfDataModel" />
+
+        <variable
+            name="ktpDataModel"
+            type="com.damai.domain.models.KtpDataModel" />
+
+        <variable
             name="vm"
             type="com.damai.amarbankregistration.MainViewModel" />
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
 </layout>

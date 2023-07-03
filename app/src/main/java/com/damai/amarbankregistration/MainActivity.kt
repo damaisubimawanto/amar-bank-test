@@ -13,10 +13,12 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initViewPager()
+        initFirstPage()
     }
 
-    private fun initViewPager() {
-
+    //region Private Functions
+    private fun initFirstPage() {
+        // TODO : Push SelfDataFragment into the FrameLayout by using AppNavigation
     }
+    //endregion `Private Functions`
 }

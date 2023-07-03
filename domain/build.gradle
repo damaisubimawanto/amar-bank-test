@@ -1,24 +1,19 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
 }
 apply from: "${rootProject.rootDir}/dependencies.gradle"
 
 android {
-    namespace 'com.damai.amarbankregistration'
+    namespace 'com.damai.domain'
     compileSdk compile_sdk_version
 
     defaultConfig {
-        applicationId "com.damai.amarbankregistration"
         minSdk min_sdk_version
         targetSdk compile_sdk_version
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary true
-        }
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -34,18 +29,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    buildFeatures {
-        dataBinding true
-    }
-    packagingOptions {
-        resources {
-            excludes += '/META-INF/{AL2.0,LGPL2.1}'
-        }
-    }
 }
 
 dependencies {
 
     implementation project(':base')
-    implementation project(':domain')
 }

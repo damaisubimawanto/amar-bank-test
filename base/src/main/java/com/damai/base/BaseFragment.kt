@@ -40,7 +40,14 @@ abstract class BaseFragment<VB: ViewDataBinding, VM: BaseViewModel> : Fragment()
         binding.onPreparationFinished()
     }
 
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
+    }
+
+    //region Optional implementation
     open fun VB.viewInitialization() {}
 
     open fun VB.onPreparationFinished() {}
+    //endregion `Optional implementation`
 }
