@@ -23,14 +23,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     buildFeatures {
         dataBinding true
-    }
-    kotlinOptions {
-        jvmTarget = '1.8'
     }
 }
 
@@ -44,6 +41,8 @@ dependencies {
     api android_library.androidx_lifecycle_viewmodel
     api android_library.androidx_navigation_fragment
     api android_library.android_material
+
+    api dagger.core
 
     testApi junit.core
     androidTestApi junit.espresso

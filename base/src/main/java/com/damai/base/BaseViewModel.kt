@@ -1,11 +1,8 @@
 package com.damai.base
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 
 /**
  * Created by damai007 on 03/July/2023
  */
-abstract class BaseViewModel(
-    app: Application
-) : AndroidViewModel(app)
+abstract class BaseViewModel : ViewModel()

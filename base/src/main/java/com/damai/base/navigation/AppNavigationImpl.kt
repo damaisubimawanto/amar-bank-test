@@ -4,11 +4,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
 import com.damai.base.extension.slideTransition
+import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * Created by damai007 on 03/July/2023
  */
-class AppNavigationImpl : AppNavigation {
+@Singleton
+class AppNavigationImpl @Inject constructor() : AppNavigation {
 
     override fun pushAddFragment(
         fragmentManager: FragmentManager,

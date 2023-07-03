@@ -7,11 +7,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
 
 /**
  * Created by damai007 on 03/July/2023
  */
-abstract class BaseFragment<VB: ViewDataBinding, VM: BaseViewModel> : Fragment() {
+abstract class BaseFragment<VB: ViewDataBinding, VM: ViewModel> : Fragment() {
 
     abstract val layoutResource: Int
     abstract val viewModel: VM

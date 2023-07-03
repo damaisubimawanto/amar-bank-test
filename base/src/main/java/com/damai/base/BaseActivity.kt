@@ -4,11 +4,12 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.ViewModel
 
 /**
  * Created by damai007 on 03/July/2023
  */
-abstract class BaseActivity<VB: ViewDataBinding, VM: BaseViewModel> : AppCompatActivity() {
+abstract class BaseActivity<VB: ViewDataBinding, VM: ViewModel> : AppCompatActivity() {
 
     abstract val layoutResource: Int
     abstract val viewModel: VM

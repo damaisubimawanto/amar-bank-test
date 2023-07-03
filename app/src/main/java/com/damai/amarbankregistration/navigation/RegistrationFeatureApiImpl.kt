@@ -5,11 +5,14 @@ import com.damai.amarbankregistration.content.DataReviewFragment
 import com.damai.amarbankregistration.content.KtpAddressFragment
 import com.damai.amarbankregistration.content.SelfDataFragment
 import com.damai.base.navigation.AppNavigation
+import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * Created by damai007 on 03/July/2023
  */
-class RegistrationFeatureApiImpl(
+@Singleton
+class RegistrationFeatureApiImpl @Inject constructor(
     private val appNavigation: AppNavigation
 ) : RegistrationFeatureApi {
 

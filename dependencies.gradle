@@ -13,6 +13,11 @@ ext {
             android_material                    : 'com.google.android.material:material:1.9.0',
     ]
 
+    dagger = [
+            core                                : 'com.google.dagger:dagger:2.46.1',
+            compiler                            : 'com.google.dagger:dagger-compiler:2.46.1'
+    ]
+
     junit = [
             core                                : 'junit:junit:4.13.2',
             espresso                            : 'androidx.test.espresso:espresso-core:3.5.1',
