@@ -15,7 +15,8 @@ import javax.inject.Singleton
         RegistrationApiModule::class,
         AppNavigationModule::class,
         ViewModelBuilderModule::class,
-        MainViewModelModule::class
+        MainViewModelModule::class,
+        DispatcherProviderModule::class
     ]
 )
 interface ApplicationComponent {

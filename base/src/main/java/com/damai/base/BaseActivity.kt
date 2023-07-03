@@ -22,6 +22,7 @@ abstract class BaseActivity<VB: ViewDataBinding, VM: ViewModel> : AppCompatActiv
         super.onCreate(savedInstanceState)
         _binding = DataBindingUtil.setContentView(this, layoutResource)
         binding.setupListeners()
+        binding.setupObservers()
     }
 
     override fun onDestroy() {
@@ -31,5 +32,7 @@ abstract class BaseActivity<VB: ViewDataBinding, VM: ViewModel> : AppCompatActiv
 
     //region Optional implementation
     open fun VB.setupListeners() {}
+
+    open fun VB.setupObservers() {}
     //endregion `Optional implementation`
 }

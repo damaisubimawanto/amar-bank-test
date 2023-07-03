@@ -2,6 +2,8 @@ package com.damai.amarbankregistration.dagger
 
 import com.damai.amarbankregistration.navigation.RegistrationFeatureApi
 import com.damai.amarbankregistration.navigation.RegistrationFeatureApiImpl
+import com.damai.base.coroutines.DispatcherProvider
+import com.damai.base.coroutines.DispatcherProviderImpl
 import com.damai.base.navigation.AppNavigation
 import com.damai.base.navigation.AppNavigationImpl
 import dagger.Binds
@@ -26,5 +28,17 @@ abstract class AppNavigationModule {
 
     @Singleton
     @Binds
-    abstract fun bindAppNavigation(appNavigation: AppNavigationImpl) : AppNavigation
+    abstract fun bindAppNavigation(
+        appNavigation: AppNavigationImpl
+    ) : AppNavigation
+}
+
+@Module
+abstract class DispatcherProviderModule {
+
+    @Singleton
+    @Binds
+    abstract fun bindDispatcherProvider(
+        dispatcherProvider: DispatcherProviderImpl
+    ) : DispatcherProvider
 }
