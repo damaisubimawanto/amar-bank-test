@@ -31,7 +31,10 @@ class MainRepositoryImpl @Inject constructor(
                             provinceName.isNotEmpty()
                         }
                     }
-                )
+                ).also {
+                    it.status = response.status
+                    it.message = response.message
+                }
             }
         }.asFlow()
     }

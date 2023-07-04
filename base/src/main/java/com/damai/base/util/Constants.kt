@@ -6,4 +6,5 @@ package com.damai.base.util
 object Constants {
 
     const val BASE_URL = "https://api.goapi.id"
+    const val SUCCESS_STATUS = "success"
 }
