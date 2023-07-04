@@ -44,6 +44,10 @@ dependencies {
 
     api dagger.core
 
+    api squareup.okhttp3
+    api squareup.retrofit2
+    api squareup.retrofit_gson_converter
+
     testApi junit.core
     androidTestApi junit.espresso
     androidTestApi junit.extension

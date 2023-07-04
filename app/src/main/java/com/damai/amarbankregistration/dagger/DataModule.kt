@@ -6,6 +6,8 @@ import com.damai.base.coroutines.DispatcherProvider
 import com.damai.base.coroutines.DispatcherProviderImpl
 import com.damai.base.navigation.AppNavigation
 import com.damai.base.navigation.AppNavigationImpl
+import com.damai.data.repo.MainRepositoryImpl
+import com.damai.domain.repositories.MainRepository
 import dagger.Binds
 import dagger.Module
 import javax.inject.Singleton
@@ -41,4 +43,14 @@ abstract class DispatcherProviderModule {
     abstract fun bindDispatcherProvider(
         dispatcherProvider: DispatcherProviderImpl
     ) : DispatcherProvider
+}
+
+@Module
+abstract class MainRepositoryModule {
+
+    @Singleton
+    @Binds
+    abstract fun bindMainRepository(
+        mainRepository: MainRepositoryImpl
+    ) : MainRepository
 }
