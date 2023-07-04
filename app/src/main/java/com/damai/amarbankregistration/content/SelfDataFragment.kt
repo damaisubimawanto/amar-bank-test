@@ -9,6 +9,7 @@ import com.damai.base.BaseFragment
 import com.damai.base.extension.addOnTextChanged
 import com.damai.base.extension.hideKeyboard
 import com.damai.base.extension.setCustomOnClickListener
+import com.damai.base.extension.setupDropDownAdapter
 import com.damai.base.extension.showDefaultSnackBar
 import com.damai.domain.models.SelfDataModel
 import com.google.android.material.textfield.TextInputLayout
@@ -39,6 +40,13 @@ class SelfDataFragment : BaseFragment<FragmentSelfDataBinding, MainViewModel>() 
             etEducation.setText(data.education)
             etDob.setText(data.dateOfBirth)
         }
+
+        etEducation.setupDropDownAdapter(
+            activity = activity,
+            list = resources.getStringArray(R.array.educations).toList()
+        ) {
+            hideErrorText(inputLayout = tilEducation)
+        }
     }
 
     override fun FragmentSelfDataBinding.setupListeners() {
@@ -55,16 +63,6 @@ class SelfDataFragment : BaseFragment<FragmentSelfDataBinding, MainViewModel>() 
         etBankAcountNumber.addOnTextChanged {
             if (it.isNotBlank()) {
                 hideErrorText(inputLayout = tilBankAccountNumber)
-            }
-        }
-        etEducation.addOnTextChanged {
-            if (it.isNotBlank()) {
-                hideErrorText(inputLayout = tilEducation)
-            }
-        }
-        etDob.addOnTextChanged {
-            if (it.isNotBlank()) {
-                hideErrorText(inputLayout = tilDob)
             }
         }
 

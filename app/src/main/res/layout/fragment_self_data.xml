@@ -27,14 +27,20 @@
                 app:layout_constraintEnd_toStartOf="@+id/guidelinePaddingRight"
                 app:layout_constraintStart_toEndOf="@+id/guidelinePaddingLeft"
                 app:layout_constraintTop_toTopOf="parent"
-                app:hintTextAppearance="@style/HintTextInput"
-                app:errorTextAppearance="@style/ErrorTextInput">
+                app:errorTextAppearance="@style/ErrorTextInput"
+                app:hintTextAppearance="@style/HintTextInput">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etNationalId"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:digits="@string/numeric_only"
                     android:hint="@string/hint_national_id"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:maxLength="16"
+                    android:maxLines="1"
+                    android:nextFocusDown="@id/etFullName"
                     android:textAppearance="@style/TextInput" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -53,14 +59,21 @@
                 app:layout_constraintEnd_toStartOf="@+id/guidelinePaddingRight"
                 app:layout_constraintStart_toEndOf="@+id/guidelinePaddingLeft"
                 app:layout_constraintTop_toBottomOf="@+id/spaceBetweenNationalAndFullName"
-                app:hintTextAppearance="@style/HintTextInput"
-                app:errorTextAppearance="@style/ErrorTextInput">
+                app:errorTextAppearance="@style/ErrorTextInput"
+                app:hintTextAppearance="@style/HintTextInput">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etFullName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:digits="@string/character_only"
                     android:hint="@string/hint_full_name"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapSentences"
+                    android:maxLength="10"
+                    android:maxLines="1"
+                    android:nextFocusDown="@id/etBankAcountNumber"
+                    android:singleLine="true"
                     android:textAppearance="@style/TextInput" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -79,14 +92,19 @@
                 app:layout_constraintEnd_toStartOf="@+id/guidelinePaddingRight"
                 app:layout_constraintStart_toEndOf="@+id/guidelinePaddingLeft"
                 app:layout_constraintTop_toBottomOf="@+id/spaceBetweenFullNameAndBankAccount"
-                app:hintTextAppearance="@style/HintTextInput"
-                app:errorTextAppearance="@style/ErrorTextInput">
+                app:errorTextAppearance="@style/ErrorTextInput"
+                app:hintTextAppearance="@style/HintTextInput">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etBankAcountNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:digits="@string/numeric_only"
                     android:hint="@string/hint_bank_account_number"
+                    android:imeOptions="actionDone"
+                    android:inputType="number"
+                    android:maxLength="8"
+                    android:maxLines="1"
                     android:textAppearance="@style/TextInput" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -105,8 +123,8 @@
                 app:layout_constraintEnd_toStartOf="@+id/guidelinePaddingRight"
                 app:layout_constraintStart_toEndOf="@+id/guidelinePaddingLeft"
                 app:layout_constraintTop_toBottomOf="@+id/spaceBetweenBankAccountAndEducation"
-                app:hintTextAppearance="@style/HintTextInput"
-                app:errorTextAppearance="@style/ErrorTextInput">
+                app:errorTextAppearance="@style/ErrorTextInput"
+                app:hintTextAppearance="@style/HintTextInput">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etEducation"
@@ -131,8 +149,8 @@
                 app:layout_constraintEnd_toStartOf="@+id/guidelinePaddingRight"
                 app:layout_constraintStart_toEndOf="@+id/guidelinePaddingLeft"
                 app:layout_constraintTop_toBottomOf="@+id/spaceBetweenEducationAndDob"
-                app:hintTextAppearance="@style/HintTextInput"
-                app:errorTextAppearance="@style/ErrorTextInput">
+                app:errorTextAppearance="@style/ErrorTextInput"
+                app:hintTextAppearance="@style/HintTextInput">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etDob"

@@ -14,4 +14,7 @@
     <string name="error_bank_account_number">Bank Account Number cannot be empty</string>
     <string name="error_education">Education cannot be empty</string>
     <string name="error_date_of_birth">Date Of Birth cannot be empty</string>
+    
+    <string name="character_only">abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="numeric_only">0123456789</string>
 </resources>

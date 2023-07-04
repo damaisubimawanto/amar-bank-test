@@ -3,8 +3,15 @@ package com.damai.base.extension
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.view.View.OnFocusChangeListener
+import android.view.WindowManager
+import android.widget.ArrayAdapter
+import android.widget.ListView
+import android.widget.PopupWindow
 import androidx.appcompat.widget.AppCompatEditText
+import androidx.fragment.app.FragmentActivity
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.textfield.TextInputEditText
 
 /**
  * Created by damai007 on 03/July/2023
@@ -49,4 +56,49 @@ fun AppCompatEditText.addOnTextChanged(callback: (String) -> Unit) {
 
         override fun afterTextChanged(p0: Editable?) {}
     })
+}
+
+fun TextInputEditText.setupDropDownAdapter(
+    activity: FragmentActivity?,
+    list: List<String>,
+    callback: (String) -> Unit
+) {
+    fun showDropDown(): PopupWindow {
+        val popupWindow = PopupWindow(context)
+        val arrayAdapter = ArrayAdapter(
+            context,
+            android.R.layout.select_dialog_item,
+            list
+        )
+        val listView = ListView(context)
+        listView.adapter = arrayAdapter
+        listView.setOnItemClickListener { _, _, position, _ ->
+            list[position].let { selectedText ->
+                setText(selectedText)
+                callback.invoke(selectedText)
+            }
+            popupWindow.dismiss()
+        }
+        listView.isFocusable = true
+
+        popupWindow.width = this.width
+        popupWindow.height = WindowManager.LayoutParams.WRAP_CONTENT
+        popupWindow.contentView = listView
+        popupWindow.isOutsideTouchable = true
+        popupWindow.showAsDropDown(this, 0, 0)
+        return popupWindow
+    }
+
+    onFocusChangeListener = object : OnFocusChangeListener {
+        private var mPopupWindow: PopupWindow? = null
+
+        override fun onFocusChange(p0: View?, p1: Boolean) {
+            if (p1) {
+                activity?.hideKeyboard()
+                mPopupWindow?.dismiss()
+                mPopupWindow = showDropDown()
+                clearFocus()
+            }
+        }
+    }
 }
