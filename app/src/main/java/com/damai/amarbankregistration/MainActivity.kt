@@ -24,7 +24,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     @Inject
     override lateinit var viewModel: MainViewModel
-
     //endregion `Variables`
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,7 +52,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         })
 
         observe(viewModel.state) {
-            when (viewModel.state.value) {
+            when (it) {
                 RegistrationState.SelfData -> {
 
                 }
@@ -63,13 +62,12 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                 RegistrationState.DataReview -> {
 
                 }
-                else -> Unit
             }
         }
 
         observe(viewModel.successRegisterData) { isSuccess ->
             if (isSuccess) {
-
+                finish()
             }
         }
     }

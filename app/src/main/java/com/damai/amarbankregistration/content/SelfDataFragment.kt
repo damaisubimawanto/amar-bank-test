@@ -9,6 +9,7 @@ import com.damai.base.BaseFragment
 import com.damai.base.extension.addOnTextChanged
 import com.damai.base.extension.hideKeyboard
 import com.damai.base.extension.setCustomOnClickListener
+import com.damai.base.extension.setupDatePicker
 import com.damai.base.extension.setupDropDownAdapter
 import com.damai.base.extension.showDefaultSnackBar
 import com.damai.domain.models.SelfDataModel
@@ -46,6 +47,10 @@ class SelfDataFragment : BaseFragment<FragmentSelfDataBinding, MainViewModel>() 
             list = resources.getStringArray(R.array.educations).toList()
         ) {
             hideErrorText(inputLayout = tilEducation)
+        }
+
+        etDob.setupDatePicker {
+            hideErrorText(inputLayout = tilDob)
         }
     }
 

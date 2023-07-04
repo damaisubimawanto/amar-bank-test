@@ -1,5 +1,6 @@
 package com.damai.base.extension
 
+import android.app.DatePickerDialog
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
@@ -10,8 +11,11 @@ import android.widget.ListView
 import android.widget.PopupWindow
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.fragment.app.FragmentActivity
+import com.damai.base.util.SimpleDateUtil
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
+import java.util.Calendar
+import java.util.Date
 
 /**
  * Created by damai007 on 03/July/2023
@@ -99,6 +103,47 @@ fun TextInputEditText.setupDropDownAdapter(
                 mPopupWindow = showDropDown()
                 clearFocus()
             }
+        }
+    }
+}
+
+fun TextInputEditText.setupDatePicker(
+    callback: (String) -> Unit
+) {
+    fun showDatePicker() {
+        val selectedDate = SimpleDateUtil.parseStringToDate(
+            givenDateString = text?.toString().orEmpty(),
+            sourceFormat = SimpleDateUtil.DateFormat.DD_MM_YYYY
+        )
+
+        val calendar = Calendar.getInstance()
+        calendar.time = selectedDate ?: Date()
+
+        val datePickerDialog = DatePickerDialog(
+            context,
+            { _, year, month, day ->
+                val selectedCalendar = Calendar.getInstance()
+                selectedCalendar.set(year, month, day)
+
+                SimpleDateUtil.parseDateToString(
+                    givenDate = selectedCalendar.time,
+                    outputFormat = SimpleDateUtil.DateFormat.DD_MM_YYYY
+                ).let { selectedText ->
+                    setText(selectedText)
+                    callback.invoke(selectedText)
+                }
+            },
+            calendar.get(Calendar.YEAR),
+            calendar.get(Calendar.MONTH),
+            calendar.get(Calendar.DAY_OF_MONTH)
+        )
+        datePickerDialog.show()
+    }
+
+    setOnFocusChangeListener { _, isFocus ->
+        if (isFocus) {
+            showDatePicker()
+            clearFocus()
         }
     }
 }
