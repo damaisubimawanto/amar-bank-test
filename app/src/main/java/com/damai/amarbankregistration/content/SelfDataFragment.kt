@@ -1,8 +1,6 @@
 package com.damai.amarbankregistration.content
 
 import android.content.Context
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import com.damai.amarbankregistration.MainActivity
 import com.damai.amarbankregistration.MainViewModel
 import com.damai.amarbankregistration.R
@@ -19,12 +17,10 @@ import javax.inject.Inject
 class SelfDataFragment : BaseFragment<FragmentSelfDataBinding, MainViewModel>() {
 
     //region Variables
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-
     override val layoutResource: Int = R.layout.fragment_self_data
 
-    override val viewModel: MainViewModel by viewModels { viewModelFactory }
+    @Inject
+    override lateinit var viewModel: MainViewModel
     //endregion `Variables`
 
     override fun onAttach(context: Context) {

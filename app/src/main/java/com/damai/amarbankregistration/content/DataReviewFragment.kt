@@ -1,7 +1,7 @@
 package com.damai.amarbankregistration.content
 
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
+import android.content.Context
+import com.damai.amarbankregistration.MainActivity
 import com.damai.amarbankregistration.MainViewModel
 import com.damai.amarbankregistration.R
 import com.damai.amarbankregistration.databinding.FragmentDataReviewBinding
@@ -13,12 +13,17 @@ import javax.inject.Inject
  */
 class DataReviewFragment : BaseFragment<FragmentDataReviewBinding, MainViewModel>() {
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-
+    //region Variables
     override val layoutResource: Int = R.layout.fragment_data_review
 
-    override val viewModel: MainViewModel by viewModels { viewModelFactory }
+    @Inject
+    override lateinit var viewModel: MainViewModel
+    //endregion `Variables`
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (context as MainActivity).registerComponent.inject(fragment = this)
+    }
 
     override fun FragmentDataReviewBinding.viewInitialization() {
         // TODO("Not yet implemented")

@@ -9,7 +9,7 @@ import dagger.Subcomponent
 /**
  * Created by damai007 on 04/July/2023
  */
-/*@ActivityScope*/
+@ActivityScope
 @Subcomponent
 interface RegisterComponent {
 

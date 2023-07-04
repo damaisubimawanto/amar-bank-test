@@ -17,7 +17,7 @@ import javax.inject.Inject
 /**
  * Created by damai007 on 03/July/2023
  */
-/*@ActivityScope*/
+@ActivityScope
 class MainViewModel @Inject constructor(
     private val dispatcher: DispatcherProvider
 ) : ViewModel() {

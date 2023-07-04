@@ -1,8 +1,6 @@
 package com.damai.amarbankregistration.content
 
 import android.content.Context
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import com.damai.amarbankregistration.MainActivity
 import com.damai.amarbankregistration.MainViewModel
 import com.damai.amarbankregistration.R
@@ -16,12 +14,10 @@ import javax.inject.Inject
 class KtpAddressFragment : BaseFragment<FragmentKtpAddressBinding, MainViewModel>() {
 
     //region Variables
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-
     override val layoutResource: Int = R.layout.fragment_ktp_address
 
-    override val viewModel: MainViewModel by viewModels { viewModelFactory }
+    @Inject
+    override lateinit var viewModel: MainViewModel
     //endregion `Variables`
 
     override fun onAttach(context: Context) {

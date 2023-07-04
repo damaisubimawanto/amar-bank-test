@@ -13,8 +13,6 @@ import javax.inject.Singleton
     modules = [
         RegistrationApiModule::class,
         AppNavigationModule::class,
-        ViewModelBuilderModule::class,
-        MainViewModelModule::class,
         DispatcherProviderModule::class,
         SubcomponentsModule::class
     ]
