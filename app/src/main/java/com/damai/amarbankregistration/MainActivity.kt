@@ -36,7 +36,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     }
 
     override fun ActivityMainBinding.setupListeners() {
-        onBackPressedDispatcher.addCallback(lifecycleOwner) {
+        onBackPressedDispatcher.addCallback(this@MainActivity) {
             handleBackPressed()
         }
     }
@@ -102,6 +102,15 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
             if (backStackEntryCount == 0) {
                 finish()
             } else {
+                when (viewModel.state.value) {
+                    RegistrationState.DataReview -> {
+                        viewModel.changeState(newState = RegistrationState.KtpData)
+                    }
+                    RegistrationState.KtpData -> {
+                        viewModel.changeState(newState = RegistrationState.SelfData)
+                    }
+                    else -> Unit
+                }
                 popBackStack()
             }
         }
