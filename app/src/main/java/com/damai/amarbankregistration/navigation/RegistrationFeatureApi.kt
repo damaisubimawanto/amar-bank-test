@@ -1,5 +1,6 @@
 package com.damai.amarbankregistration.navigation
 
+import androidx.annotation.IdRes
 import androidx.fragment.app.FragmentActivity
 
 /**
@@ -9,16 +10,16 @@ interface RegistrationFeatureApi {
 
     fun navigateToSelfDataFragment(
         fragmentActivity: FragmentActivity,
-        container: Int
+        @IdRes container: Int
     )
 
     fun navigateToKtpAddressFragment(
         fragmentActivity: FragmentActivity,
-        container: Int
+        @IdRes container: Int
     )
 
     fun navigateToDataReviewFragment(
         fragmentActivity: FragmentActivity,
-        container: Int
+        @IdRes container: Int
     )
 }

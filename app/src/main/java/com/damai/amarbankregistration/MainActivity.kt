@@ -5,6 +5,7 @@ import androidx.activity.addCallback
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.damai.amarbankregistration.application.MyApplication
+import com.damai.amarbankregistration.dagger.RegisterComponent
 import com.damai.amarbankregistration.databinding.ActivityMainBinding
 import com.damai.amarbankregistration.navigation.RegistrationFeatureApi
 import com.damai.base.BaseActivity
@@ -21,40 +22,35 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     @Inject
     lateinit var registrationFeatureApi: RegistrationFeatureApi
-    //endregion `Variables`
+
+    lateinit var registerComponent: RegisterComponent
 
     override val layoutResource: Int = R.layout.activity_main
 
     override val viewModel: MainViewModel by viewModels { viewModelFactory }
+    //endregion `Variables`
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        (applicationContext as MyApplication).appComponent.inject(this)
+        registerComponent = (applicationContext as MyApplication).appComponent
+            .registerComponent()
+            .create()
+        registerComponent.inject(activity = this)
         super.onCreate(savedInstanceState)
         initFirstPage()
     }
 
     override fun ActivityMainBinding.setupListeners() {
         onBackPressedDispatcher.addCallback(lifecycleOwner) {
-            handleBackPress()
+            handleBackPressed()
         }
     }
 
     override fun ActivityMainBinding.setupObservers() {
         observe(viewModel.nextPageTrigger, EventObserver {
             when (viewModel.state.value) {
-                RegistrationState.SelfData -> {
-                    if (isSelfDataMandatoryPassed()) {
-                        openSecondPage()
-                    }
-                }
-                RegistrationState.KtpData -> {
-                    if (isKtpDataMandatoryPassed()) {
-                        openThirdPage()
-                    }
-                }
-                RegistrationState.DataReview -> {
-                    viewModel.processRegistrationData()
-                }
+                RegistrationState.SelfData -> openSecondPage()
+                RegistrationState.KtpData -> openThirdPage()
+                RegistrationState.DataReview -> viewModel.processRegistrationData()
                 else -> Unit
             }
         })
@@ -106,7 +102,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         viewModel.changeState(newState = RegistrationState.DataReview)
     }
 
-    private fun handleBackPress() {
+    private fun handleBackPressed() {
         with(supportFragmentManager) {
             if (backStackEntryCount == 0) {
                 finish()
@@ -114,14 +110,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                 popBackStack()
             }
         }
-    }
-
-    private fun isSelfDataMandatoryPassed(): Boolean {
-        return true
-    }
-
-    private fun isKtpDataMandatoryPassed(): Boolean {
-        return true
     }
     //endregion `Private Functions`
 }

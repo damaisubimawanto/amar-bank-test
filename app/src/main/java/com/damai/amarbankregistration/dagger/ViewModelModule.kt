@@ -3,11 +3,9 @@ package com.damai.amarbankregistration.dagger
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import dagger.Binds
-import dagger.MapKey
 import dagger.Module
 import javax.inject.Inject
 import javax.inject.Provider
-import kotlin.reflect.KClass
 
 /**
  * Created by damai007 on 03/July/2023
@@ -47,12 +45,3 @@ abstract class ViewModelBuilderModule {
         factory: MainViewModelFactory
     ): ViewModelProvider.Factory
 }
-
-@Target(
-    AnnotationTarget.FUNCTION,
-    AnnotationTarget.PROPERTY_GETTER,
-    AnnotationTarget.PROPERTY_SETTER
-)
-@Retention(AnnotationRetention.RUNTIME)
-@MapKey
-internal annotation class ViewModelKey(val value: KClass<out ViewModel>)

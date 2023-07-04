@@ -11,15 +11,19 @@ import com.damai.base.util.EventObserver
  * Created by damai007 on 03/July/2023
  */
 
-fun <T> Fragment.observe(liveData: LiveData<T>, action: (t: T) -> Unit) {
+fun <T> Fragment.observe(
+    liveData: LiveData<T>,
+    action: (t: T) -> Unit
+) {
     with(viewLifecycleOwner) {
         liveData.observe(this) { it?.let { t -> action(t) } }
     }
 }
 
 @JvmName("observeEvent")
-fun <T> Fragment.observe(liveData: LiveData<Event<T>>,
-                         observer: EventObserver<T>
+fun <T> Fragment.observe(
+    liveData: LiveData<Event<T>>,
+    observer: EventObserver<T>
 ) {
     with(viewLifecycleOwner) { liveData.observe(this, observer) }
 }

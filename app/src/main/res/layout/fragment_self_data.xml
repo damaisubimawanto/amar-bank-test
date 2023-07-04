@@ -11,6 +11,7 @@
     </data>
 
     <ScrollView
+        android:id="@+id/svMainView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -18,13 +19,156 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilNationalId"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@+id/guidelinePaddingRight"
+                app:layout_constraintStart_toEndOf="@+id/guidelinePaddingLeft"
+                app:layout_constraintTop_toTopOf="parent"
+                app:hintTextAppearance="@style/HintTextInput"
+                app:errorTextAppearance="@style/ErrorTextInput">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etNationalId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_national_id"
+                    android:textAppearance="@style/TextInput" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Space
+                android:id="@+id/spaceBetweenNationalAndFullName"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen_4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilNationalId" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilFullName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@+id/guidelinePaddingRight"
+                app:layout_constraintStart_toEndOf="@+id/guidelinePaddingLeft"
+                app:layout_constraintTop_toBottomOf="@+id/spaceBetweenNationalAndFullName"
+                app:hintTextAppearance="@style/HintTextInput">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etFullName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_full_name"
+                    android:textAppearance="@style/TextInput" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Space
+                android:id="@+id/spaceBetweenFullNameAndBankAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen_4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilFullName" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilBankAccountNumber"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@+id/guidelinePaddingRight"
+                app:layout_constraintStart_toEndOf="@+id/guidelinePaddingLeft"
+                app:layout_constraintTop_toBottomOf="@+id/spaceBetweenFullNameAndBankAccount"
+                app:hintTextAppearance="@style/HintTextInput">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etBankAcountNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_bank_account_number"
+                    android:textAppearance="@style/TextInput" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Space
+                android:id="@+id/spaceBetweenBankAccountAndEducation"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen_4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilBankAccountNumber" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilEducation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@+id/guidelinePaddingRight"
+                app:layout_constraintStart_toEndOf="@+id/guidelinePaddingLeft"
+                app:layout_constraintTop_toBottomOf="@+id/spaceBetweenBankAccountAndEducation"
+                app:hintTextAppearance="@style/HintTextInput">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etEducation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_education"
+                    android:textAppearance="@style/TextInput" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Space
+                android:id="@+id/spaceBetweenEducationAndDob"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen_4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilEducation" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilDob"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@+id/guidelinePaddingRight"
+                app:layout_constraintStart_toEndOf="@+id/guidelinePaddingLeft"
+                app:layout_constraintTop_toBottomOf="@+id/spaceBetweenEducationAndDob"
+                app:hintTextAppearance="@style/HintTextInput">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etDob"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_date_of_birth"
+                    android:textAppearance="@style/TextInput" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Space
+                android:id="@+id/spaceBetweenDobAndButton"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen_16"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilDob" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSubmit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_shape_button_blue"
+                android:text="@string/submit"
+                android:textAppearance="@style/SubmitButton"
+                app:layout_constraintEnd_toStartOf="@+id/guidelinePaddingRight"
+                app:layout_constraintStart_toEndOf="@+id/guidelinePaddingLeft"
+                app:layout_constraintTop_toBottomOf="@+id/spaceBetweenDobAndButton" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelinePaddingLeft"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:text="Hello, Apa Kabar?" />
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/dimen_16" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelinePaddingRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="@dimen/dimen_16" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
