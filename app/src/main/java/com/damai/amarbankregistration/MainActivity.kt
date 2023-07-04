@@ -15,9 +15,6 @@ import javax.inject.Inject
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     //region Variables
-    /*@Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory*/
-
     @Inject
     lateinit var registrationFeatureApi: RegistrationFeatureApi
 
@@ -25,7 +22,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     override val layoutResource: Int = R.layout.activity_main
 
-    /*override val viewModel: MainViewModel by viewModels { viewModelFactory }*/
     @Inject
     override lateinit var viewModel: MainViewModel
 

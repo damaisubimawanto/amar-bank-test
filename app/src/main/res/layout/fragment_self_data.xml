@@ -42,7 +42,7 @@
             <Space
                 android:id="@+id/spaceBetweenNationalAndFullName"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/dimen_4"
+                android:layout_height="@dimen/dimen_8"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tilNationalId" />
 
@@ -53,7 +53,8 @@
                 app:layout_constraintEnd_toStartOf="@+id/guidelinePaddingRight"
                 app:layout_constraintStart_toEndOf="@+id/guidelinePaddingLeft"
                 app:layout_constraintTop_toBottomOf="@+id/spaceBetweenNationalAndFullName"
-                app:hintTextAppearance="@style/HintTextInput">
+                app:hintTextAppearance="@style/HintTextInput"
+                app:errorTextAppearance="@style/ErrorTextInput">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etFullName"
@@ -67,7 +68,7 @@
             <Space
                 android:id="@+id/spaceBetweenFullNameAndBankAccount"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/dimen_4"
+                android:layout_height="@dimen/dimen_8"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tilFullName" />
 
@@ -78,7 +79,8 @@
                 app:layout_constraintEnd_toStartOf="@+id/guidelinePaddingRight"
                 app:layout_constraintStart_toEndOf="@+id/guidelinePaddingLeft"
                 app:layout_constraintTop_toBottomOf="@+id/spaceBetweenFullNameAndBankAccount"
-                app:hintTextAppearance="@style/HintTextInput">
+                app:hintTextAppearance="@style/HintTextInput"
+                app:errorTextAppearance="@style/ErrorTextInput">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etBankAcountNumber"
@@ -92,7 +94,7 @@
             <Space
                 android:id="@+id/spaceBetweenBankAccountAndEducation"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/dimen_4"
+                android:layout_height="@dimen/dimen_8"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tilBankAccountNumber" />
 
@@ -103,7 +105,8 @@
                 app:layout_constraintEnd_toStartOf="@+id/guidelinePaddingRight"
                 app:layout_constraintStart_toEndOf="@+id/guidelinePaddingLeft"
                 app:layout_constraintTop_toBottomOf="@+id/spaceBetweenBankAccountAndEducation"
-                app:hintTextAppearance="@style/HintTextInput">
+                app:hintTextAppearance="@style/HintTextInput"
+                app:errorTextAppearance="@style/ErrorTextInput">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etEducation"
@@ -117,7 +120,7 @@
             <Space
                 android:id="@+id/spaceBetweenEducationAndDob"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/dimen_4"
+                android:layout_height="@dimen/dimen_8"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tilEducation" />
 
@@ -128,7 +131,8 @@
                 app:layout_constraintEnd_toStartOf="@+id/guidelinePaddingRight"
                 app:layout_constraintStart_toEndOf="@+id/guidelinePaddingLeft"
                 app:layout_constraintTop_toBottomOf="@+id/spaceBetweenEducationAndDob"
-                app:hintTextAppearance="@style/HintTextInput">
+                app:hintTextAppearance="@style/HintTextInput"
+                app:errorTextAppearance="@style/ErrorTextInput">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etDob"

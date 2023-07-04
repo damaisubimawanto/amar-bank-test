@@ -6,9 +6,12 @@ import com.damai.amarbankregistration.MainViewModel
 import com.damai.amarbankregistration.R
 import com.damai.amarbankregistration.databinding.FragmentSelfDataBinding
 import com.damai.base.BaseFragment
+import com.damai.base.extension.addOnTextChanged
+import com.damai.base.extension.hideKeyboard
 import com.damai.base.extension.setCustomOnClickListener
 import com.damai.base.extension.showDefaultSnackBar
 import com.damai.domain.models.SelfDataModel
+import com.google.android.material.textfield.TextInputLayout
 import javax.inject.Inject
 
 /**
@@ -39,6 +42,32 @@ class SelfDataFragment : BaseFragment<FragmentSelfDataBinding, MainViewModel>() 
     }
 
     override fun FragmentSelfDataBinding.setupListeners() {
+        etNationalId.addOnTextChanged {
+            if (it.isNotBlank()) {
+                hideErrorText(inputLayout = tilNationalId)
+            }
+        }
+        etFullName.addOnTextChanged {
+            if (it.isNotBlank()) {
+                hideErrorText(inputLayout = tilFullName)
+            }
+        }
+        etBankAcountNumber.addOnTextChanged {
+            if (it.isNotBlank()) {
+                hideErrorText(inputLayout = tilBankAccountNumber)
+            }
+        }
+        etEducation.addOnTextChanged {
+            if (it.isNotBlank()) {
+                hideErrorText(inputLayout = tilEducation)
+            }
+        }
+        etDob.addOnTextChanged {
+            if (it.isNotBlank()) {
+                hideErrorText(inputLayout = tilDob)
+            }
+        }
+
         btnSubmit.setCustomOnClickListener {
             if (isSelfDataMandatoryPassed()) {
                 viewModel.triggerOnNextPage()
@@ -63,48 +92,37 @@ class SelfDataFragment : BaseFragment<FragmentSelfDataBinding, MainViewModel>() 
                 dateOfBirth = dateOfBirth
             )
 
+            /* Start the validation process. */
             var isError = false
             var errorMessage = ""
             if (dateOfBirth.isEmpty()) {
                 isError = true
                 tilDob.error = getString(R.string.error_cannot_be_empty)
                 errorMessage = getString(R.string.error_date_of_birth)
-            } else {
-                tilDob.error = null
             }
-
             if (education.isEmpty()) {
                 isError = true
                 tilEducation.error = getString(R.string.error_cannot_be_empty)
                 errorMessage = getString(R.string.error_education)
-            } else {
-                tilEducation.error = null
             }
-
             if (bankAccountNumber.isEmpty()) {
                 isError = true
                 tilBankAccountNumber.error = getString(R.string.error_cannot_be_empty)
                 errorMessage = getString(R.string.error_bank_account_number)
-            } else {
-                tilBankAccountNumber.error = null
             }
-
             if (fullName.isEmpty()) {
                 isError = true
                 tilFullName.error = getString(R.string.error_cannot_be_empty)
                 errorMessage = getString(R.string.error_full_name)
-            } else {
-                tilFullName.error = null
             }
-
             if (nationalId.isEmpty()) {
                 isError = true
                 tilNationalId.error = getString(R.string.error_cannot_be_empty)
                 errorMessage = getString(R.string.error_national_id)
-            } else {
-                tilNationalId.error = null
             }
 
+            /* Hide the keyboard and show the error message if there is any empty fields. */
+            activity.hideKeyboard()
             return if (isError) {
                 svMainView.showDefaultSnackBar(message = errorMessage)
                 false
@@ -112,6 +130,11 @@ class SelfDataFragment : BaseFragment<FragmentSelfDataBinding, MainViewModel>() 
                 true
             }
         }
+    }
+
+    private fun hideErrorText(inputLayout: TextInputLayout) {
+        inputLayout.error = null
+        inputLayout.isErrorEnabled = false
     }
     //endregion `Private Functions`
 }
