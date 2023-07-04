@@ -11,6 +11,7 @@
     </data>
 
     <ScrollView
+        android:id="@+id/svMainView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white">
@@ -19,14 +20,144 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilDomicile"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@+id/guidelinePaddingRight"
+                app:layout_constraintStart_toEndOf="@+id/guidelinePaddingLeft"
+                app:layout_constraintTop_toTopOf="parent"
+                app:errorTextAppearance="@style/ErrorTextInput"
+                app:hintTextAppearance="@style/HintTextInput">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etDomicile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="@string/alpha_numeric"
+                    android:hint="@string/hint_domicile_address"
+                    android:inputType="textMultiLine"
+                    android:minLines="2"
+                    android:maxLength="100"
+                    android:maxLines="2"
+                    android:textAppearance="@style/TextInput" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Space
+                android:id="@+id/spaceBetweenDomicileAndHousingType"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen_8"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilDomicile" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilHousingType"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@+id/guidelinePaddingRight"
+                app:layout_constraintStart_toEndOf="@+id/guidelinePaddingLeft"
+                app:layout_constraintTop_toBottomOf="@+id/spaceBetweenDomicileAndHousingType"
+                app:errorTextAppearance="@style/ErrorTextInput"
+                app:hintTextAppearance="@style/HintTextInput">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etHousingType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_housing_type"
+                    android:textAppearance="@style/TextInput" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Space
+                android:id="@+id/spaceBetweenHousingTypeAndHouseNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen_8"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilHousingType" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilHouseNumber"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@+id/guidelinePaddingRight"
+                app:layout_constraintStart_toEndOf="@+id/guidelinePaddingLeft"
+                app:layout_constraintTop_toBottomOf="@+id/spaceBetweenHousingTypeAndHouseNumber"
+                app:errorTextAppearance="@style/ErrorTextInput"
+                app:hintTextAppearance="@style/HintTextInput">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etHouseNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="@string/alpha_numeric"
+                    android:hint="@string/hint_house_number"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textAppearance="@style/TextInput" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Space
+                android:id="@+id/spaceBetweenHouseNumberAndProvince"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen_8"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilHouseNumber" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilProvince"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@+id/guidelinePaddingRight"
+                app:layout_constraintStart_toEndOf="@+id/guidelinePaddingLeft"
+                app:layout_constraintTop_toBottomOf="@+id/spaceBetweenHouseNumberAndProvince"
+                app:errorTextAppearance="@style/ErrorTextInput"
+                app:hintTextAppearance="@style/HintTextInput">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etProvince"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_province"
+                    android:textAppearance="@style/TextInput" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Space
+                android:id="@+id/spaceBetweenProvinceAndButton"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen_16"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilProvince" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSubmit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_shape_button_blue"
+                android:text="@string/submit"
+                android:textAppearance="@style/SubmitButton"
+                app:layout_constraintEnd_toStartOf="@+id/guidelinePaddingRight"
+                app:layout_constraintStart_toEndOf="@+id/guidelinePaddingLeft"
+                app:layout_constraintTop_toBottomOf="@+id/spaceBetweenProvinceAndButton" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelinePaddingLeft"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hello, ini page ke-2"
-                android:textColor="@color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/dimen_16" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelinePaddingRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="@dimen/dimen_16" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

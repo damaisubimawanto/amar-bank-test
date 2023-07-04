@@ -16,3 +16,4 @@ rootProject.name = "AmarBankRegistration"
 include ':app'
 include ':base'
 include ':domain'
+include ':data'

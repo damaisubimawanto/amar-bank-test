@@ -8,13 +8,23 @@
     <string name="hint_education">Education</string>
     <string name="hint_date_of_birth">Date of Birth (DOB)</string>
 
+    <string name="hint_domicile_address">Domicile Address</string>
+    <string name="hint_housing_type">Housing Type</string>
+    <string name="hint_house_number">House No</string>
+    <string name="hint_province">Province</string>
+
     <string name="error_cannot_be_empty">This field cannot be empty</string>
     <string name="error_national_id">National ID cannot be empty</string>
     <string name="error_full_name">Full Name cannot be empty</string>
     <string name="error_bank_account_number">Bank Account Number cannot be empty</string>
     <string name="error_education">Education cannot be empty</string>
     <string name="error_date_of_birth">Date Of Birth cannot be empty</string>
+    <string name="error_domicile_address">Domicile Address cannot be empty</string>
+    <string name="error_housing_type">Housing Type cannot be empty</string>
+    <string name="error_house_number">House Number cannot be empty</string>
+    <string name="error_province">Province cannot be empty</string>
     
     <string name="character_only">abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
     <string name="numeric_only">0123456789</string>
+    <string name="alpha_numeric">abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789</string>
 </resources>

@@ -24,7 +24,7 @@ class AppNavigationImpl @Inject constructor() : AppNavigation {
         }
     }
 
-    override fun pushAddFragment(
+    override fun pushReplaceFragment(
         fragmentManager: FragmentManager,
         containerId: Int,
         fragment: Fragment,
@@ -33,7 +33,7 @@ class AppNavigationImpl @Inject constructor() : AppNavigation {
         commit {
             slideTransition()
             fragmentTag.takeIf { it.isNullOrEmpty().not() }?.let { tag ->
-                add(containerId, fragment, tag)
+                replace(containerId, fragment, tag)
                 addToBackStack(tag)
             } ?: add(containerId, fragment)
         }

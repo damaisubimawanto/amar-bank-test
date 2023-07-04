@@ -25,7 +25,7 @@ class RegistrationFeatureApiImpl @Inject constructor(
     }
 
     override fun navigateToKtpAddressFragment(fragmentActivity: FragmentActivity, container: Int) {
-        appNavigation.pushAddFragment(
+        appNavigation.pushReplaceFragment(
             fragmentManager = fragmentActivity.supportFragmentManager,
             containerId = container,
             fragment = KtpAddressFragment(),
@@ -34,7 +34,7 @@ class RegistrationFeatureApiImpl @Inject constructor(
     }
 
     override fun navigateToDataReviewFragment(fragmentActivity: FragmentActivity, container: Int) {
-        appNavigation.pushAddFragment(
+        appNavigation.pushReplaceFragment(
             fragmentManager = fragmentActivity.supportFragmentManager,
             containerId = container,
             fragment = DataReviewFragment(),

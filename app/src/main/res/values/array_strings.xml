@@ -8,4 +8,9 @@
         <item>S2</item>
         <item>S3</item>
     </string-array>
+    
+    <string-array name="housing_types">
+        <item>Rumah</item>
+        <item>Kantor</item>
+    </string-array>
 </resources>

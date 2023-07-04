@@ -1,8 +1,11 @@
 package com.damai.base.navigation
 
+import android.widget.FrameLayout
 import androidx.annotation.IdRes
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 
 /**
  * Created by damai007 on 03/July/2023
@@ -19,15 +22,15 @@ interface AppNavigation {
     )
 
     /**
-     * Push a fragment to [FragmentManager] using [FragmentTransaction.add] if added into backstack previous
-     * fragment will be resumed [Fragment.onResume]
+     * Push a fragment to [FragmentManager] using [FragmentTransaction.replace] if added into backstack previous
+     * fragment will be re-created [Fragment.onCreate]
      *
      * @param fragmentManager either [AppCompatActivity.getSupportFragmentManager] or [Fragment.getChildFragmentManager]
      * @param containerId view container id usually [FrameLayout]
      * @param fragment that will going to attach
      * @param fragmentTag will add to [FragmentTransaction.addToBackStack] if not empty
      */
-    fun pushAddFragment(
+    fun pushReplaceFragment(
         fragmentManager: FragmentManager,
         @IdRes containerId: Int,
         fragment: Fragment,

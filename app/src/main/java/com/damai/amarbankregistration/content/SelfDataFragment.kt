@@ -7,13 +7,13 @@ import com.damai.amarbankregistration.R
 import com.damai.amarbankregistration.databinding.FragmentSelfDataBinding
 import com.damai.base.BaseFragment
 import com.damai.base.extension.addOnTextChanged
+import com.damai.base.extension.hideError
 import com.damai.base.extension.hideKeyboard
 import com.damai.base.extension.setCustomOnClickListener
 import com.damai.base.extension.setupDatePicker
 import com.damai.base.extension.setupDropDownAdapter
 import com.damai.base.extension.showDefaultSnackBar
 import com.damai.domain.models.SelfDataModel
-import com.google.android.material.textfield.TextInputLayout
 import javax.inject.Inject
 
 /**
@@ -46,28 +46,28 @@ class SelfDataFragment : BaseFragment<FragmentSelfDataBinding, MainViewModel>() 
             activity = activity,
             list = resources.getStringArray(R.array.educations).toList()
         ) {
-            hideErrorText(inputLayout = tilEducation)
+            tilEducation.hideError()
         }
 
         etDob.setupDatePicker {
-            hideErrorText(inputLayout = tilDob)
+            tilDob.hideError()
         }
     }
 
     override fun FragmentSelfDataBinding.setupListeners() {
         etNationalId.addOnTextChanged {
             if (it.isNotBlank()) {
-                hideErrorText(inputLayout = tilNationalId)
+                tilNationalId.hideError()
             }
         }
         etFullName.addOnTextChanged {
             if (it.isNotBlank()) {
-                hideErrorText(inputLayout = tilFullName)
+                tilFullName.hideError()
             }
         }
         etBankAcountNumber.addOnTextChanged {
             if (it.isNotBlank()) {
-                hideErrorText(inputLayout = tilBankAccountNumber)
+                tilBankAccountNumber.hideError()
             }
         }
 
@@ -81,11 +81,11 @@ class SelfDataFragment : BaseFragment<FragmentSelfDataBinding, MainViewModel>() 
     //region Private Functions
     private fun isSelfDataMandatoryPassed(): Boolean {
         with(binding) {
-            val nationalId = etNationalId.text?.toString()?.trim().orEmpty()
-            val fullName = etFullName.text?.toString()?.trim().orEmpty()
-            val bankAccountNumber = etBankAcountNumber.text?.toString()?.trim().orEmpty()
-            val education = etEducation.text?.toString()?.trim().orEmpty()
-            val dateOfBirth = etDob.text?.toString()?.trim().orEmpty()
+            val nationalId = etNationalId.text?.trim()?.toString().orEmpty()
+            val fullName = etFullName.text?.trim()?.toString().orEmpty()
+            val bankAccountNumber = etBankAcountNumber.text?.trim()?.toString().orEmpty()
+            val education = etEducation.text?.trim()?.toString().orEmpty()
+            val dateOfBirth = etDob.text?.trim()?.toString().orEmpty()
 
             viewModel.selfDataModel = SelfDataModel(
                 nationalId = nationalId,
@@ -133,11 +133,6 @@ class SelfDataFragment : BaseFragment<FragmentSelfDataBinding, MainViewModel>() 
                 true
             }
         }
-    }
-
-    private fun hideErrorText(inputLayout: TextInputLayout) {
-        inputLayout.error = null
-        inputLayout.isErrorEnabled = false
     }
     //endregion `Private Functions`
 }

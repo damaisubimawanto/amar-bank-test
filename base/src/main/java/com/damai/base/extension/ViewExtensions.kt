@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentActivity
 import com.damai.base.util.SimpleDateUtil
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import java.util.Calendar
 import java.util.Date
 
@@ -60,6 +61,11 @@ fun AppCompatEditText.addOnTextChanged(callback: (String) -> Unit) {
 
         override fun afterTextChanged(p0: Editable?) {}
     })
+}
+
+fun TextInputLayout.hideError() {
+    error = null
+    isErrorEnabled = false
 }
 
 fun TextInputEditText.setupDropDownAdapter(

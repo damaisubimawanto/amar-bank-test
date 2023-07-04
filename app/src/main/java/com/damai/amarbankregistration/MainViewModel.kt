@@ -31,6 +31,9 @@ class MainViewModel @Inject constructor(
 
     private val _successRegisterData = MutableLiveData(false)
     val successRegisterData = _successRegisterData.asLiveData()
+
+    private val _provinceListLiveData = MutableLiveData<List<String>>()
+    val provinceListLiveData = _provinceListLiveData.asLiveData()
     //endregion `Live Data Variables`
 
     //region Data Variables
@@ -44,7 +47,7 @@ class MainViewModel @Inject constructor(
     }
 
     fun triggerOnNextPage() {
-        Event(Unit).let(_nextPageTrigger::postValue)
+        Event(Unit).let(_nextPageTrigger::setValue)
     }
 
     fun processRegistrationData() {
