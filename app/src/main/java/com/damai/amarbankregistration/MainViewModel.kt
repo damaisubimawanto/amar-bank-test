@@ -6,10 +6,12 @@ import androidx.lifecycle.viewModelScope
 import com.damai.amarbankregistration.dagger.ActivityScope
 import com.damai.base.coroutines.DispatcherProvider
 import com.damai.base.extension.asLiveData
+import com.damai.base.network.Resource
 import com.damai.base.util.Event
 import com.damai.domain.models.KtpDataModel
 import com.damai.domain.models.RegistrationState
 import com.damai.domain.models.SelfDataModel
+import com.damai.domain.usecases.ProvinceUseCase
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -19,6 +21,7 @@ import javax.inject.Inject
  */
 @ActivityScope
 class MainViewModel @Inject constructor(
+    private val provinceUseCase: ProvinceUseCase,
     private val dispatcher: DispatcherProvider
 ) : ViewModel() {
 
@@ -42,6 +45,21 @@ class MainViewModel @Inject constructor(
     //endregion `Data Variables`
 
     //region Public Functions
+    fun getProvinceList() {
+        viewModelScope.launch(dispatcher.io()) {
+            provinceUseCase().collect { resource ->
+                when (resource) {
+                    is Resource.Success -> {
+                        resource.model?.data?.let(
+                            _provinceListLiveData::postValue
+                        )
+                    }
+                    is Resource.Error -> Unit
+                }
+            }
+        }
+    }
+
     fun changeState(newState: RegistrationState) {
         newState.let(_state::postValue)
     }

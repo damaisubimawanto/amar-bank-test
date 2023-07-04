@@ -11,9 +11,12 @@ import javax.inject.Singleton
 @Singleton
 @Component(
     modules = [
+        NetworkModule::class,
         RegistrationApiModule::class,
         AppNavigationModule::class,
         DispatcherProviderModule::class,
+        MapperModule::class,
+        MainRepositoryModule::class,
         SubcomponentsModule::class
     ]
 )

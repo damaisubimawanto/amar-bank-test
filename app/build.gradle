@@ -45,6 +45,7 @@ android {
 dependencies {
 
     implementation project(':base')
+    implementation project(':data')
     implementation project(':domain')
 
     kapt dagger.compiler

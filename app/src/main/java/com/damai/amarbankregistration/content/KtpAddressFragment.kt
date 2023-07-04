@@ -33,6 +33,13 @@ class KtpAddressFragment : BaseFragment<FragmentKtpAddressBinding, MainViewModel
     }
 
     override fun FragmentKtpAddressBinding.viewInitialization() {
+        viewModel.ktpDataModel?.let { data ->
+            etDomicile.setText(data.domicileAddress)
+            etHousingType.setText(data.houseType)
+            etHouseNumber.setText(data.houseNumber)
+            etProvince.setText(data.province)
+        }
+
         etHousingType.setupDropDownAdapter(
             activity = activity,
             list = resources.getStringArray(R.array.housing_types).toList()

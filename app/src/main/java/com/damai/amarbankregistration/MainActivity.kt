@@ -33,6 +33,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         registerComponent.inject(activity = this)
         super.onCreate(savedInstanceState)
         initFirstPage()
+        viewModel.getProvinceList()
     }
 
     override fun ActivityMainBinding.setupListeners() {
