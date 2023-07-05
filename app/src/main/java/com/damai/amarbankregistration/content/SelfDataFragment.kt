@@ -47,7 +47,9 @@ class SelfDataFragment : BaseFragment<FragmentSelfDataBinding, MainViewModel>() 
             tilEducation.hideError()
         }
 
-        etDob.setupDatePicker {
+        etDob.setupDatePicker(
+            activity = activity
+        ) {
             tilDob.hideError()
         }
     }

@@ -114,6 +114,7 @@ fun TextInputEditText.setupDropDownAdapter(
 }
 
 fun TextInputEditText.setupDatePicker(
+    activity: FragmentActivity?,
     callback: (String) -> Unit
 ) {
     fun showDatePicker() {
@@ -148,6 +149,7 @@ fun TextInputEditText.setupDatePicker(
 
     setOnFocusChangeListener { _, isFocus ->
         if (isFocus) {
+            activity?.hideKeyboard()
             showDatePicker()
             clearFocus()
         }
