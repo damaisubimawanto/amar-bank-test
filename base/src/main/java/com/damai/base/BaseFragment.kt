@@ -1,5 +1,6 @@
 package com.damai.base
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +21,11 @@ abstract class BaseFragment<VB: ViewDataBinding, VM: ViewModel> : Fragment() {
     private var _binding: VB? = null
     protected val binding
         get() = requireNotNull(_binding)
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        setupDaggerInjection()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,6 +54,8 @@ abstract class BaseFragment<VB: ViewDataBinding, VM: ViewModel> : Fragment() {
     }
 
     //region Optional implementation
+    open fun setupDaggerInjection() {}
+
     open fun VB.viewInitialization() {}
 
     open fun VB.onPreparationFinished() {}

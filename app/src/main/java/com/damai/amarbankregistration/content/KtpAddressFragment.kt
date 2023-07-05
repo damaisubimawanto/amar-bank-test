@@ -1,6 +1,5 @@
 package com.damai.amarbankregistration.content
 
-import android.content.Context
 import com.damai.amarbankregistration.MainActivity
 import com.damai.amarbankregistration.MainViewModel
 import com.damai.amarbankregistration.R
@@ -27,8 +26,7 @@ class KtpAddressFragment : BaseFragment<FragmentKtpAddressBinding, MainViewModel
     override lateinit var viewModel: MainViewModel
     //endregion `Variables`
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
+    override fun setupDaggerInjection() {
         (context as MainActivity).registerComponent.inject(fragment = this)
     }
 

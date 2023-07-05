@@ -27,13 +27,16 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     //endregion `Variables`
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        initFirstPage()
+        viewModel.getProvinceList()
+    }
+
+    override fun setupDaggerInjection() {
         registerComponent = (applicationContext as MyApplication).appComponent
             .registerComponent()
             .create()
         registerComponent.inject(activity = this)
-        super.onCreate(savedInstanceState)
-        initFirstPage()
-        viewModel.getProvinceList()
     }
 
     override fun ActivityMainBinding.setupListeners() {
