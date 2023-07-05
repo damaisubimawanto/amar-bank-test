@@ -18,25 +18,353 @@
 
     </data>
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/spaceBetweenScrollViewAndButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hello, ini page ke-3"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilNationalId"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelinePaddingRight"
+                    app:layout_constraintStart_toEndOf="@+id/guidelinePaddingLeft"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:errorTextAppearance="@style/ErrorTextInput"
+                    app:hintTextAppearance="@style/HintTextInput">
 
-    </ScrollView>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etNationalId"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:digits="@string/numeric_only"
+                        android:hint="@string/hint_national_id"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:maxLength="16"
+                        android:maxLines="1"
+                        android:nextFocusDown="@id/etFullName"
+                        android:text="@{selfDataModel.nationalId}"
+                        android:textAppearance="@style/TextInput" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Space
+                    android:id="@+id/spaceBetweenNationalAndFullName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dimen_8"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tilNationalId" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilFullName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelinePaddingRight"
+                    app:layout_constraintStart_toEndOf="@+id/guidelinePaddingLeft"
+                    app:layout_constraintTop_toBottomOf="@+id/spaceBetweenNationalAndFullName"
+                    app:errorTextAppearance="@style/ErrorTextInput"
+                    app:hintTextAppearance="@style/HintTextInput">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etFullName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:digits="@string/character_only"
+                        android:hint="@string/hint_full_name"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapSentences"
+                        android:maxLength="10"
+                        android:maxLines="1"
+                        android:nextFocusDown="@id/etBankAcountNumber"
+                        android:singleLine="true"
+                        android:text="@{selfDataModel.fullName}"
+                        android:textAppearance="@style/TextInput" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Space
+                    android:id="@+id/spaceBetweenFullNameAndBankAccount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dimen_8"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tilFullName" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilBankAccountNumber"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelinePaddingRight"
+                    app:layout_constraintStart_toEndOf="@+id/guidelinePaddingLeft"
+                    app:layout_constraintTop_toBottomOf="@+id/spaceBetweenFullNameAndBankAccount"
+                    app:errorTextAppearance="@style/ErrorTextInput"
+                    app:hintTextAppearance="@style/HintTextInput">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etBankAcountNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:digits="@string/numeric_only"
+                        android:hint="@string/hint_bank_account_number"
+                        android:imeOptions="actionDone"
+                        android:inputType="number"
+                        android:maxLength="8"
+                        android:maxLines="1"
+                        android:text="@{selfDataModel.bankAccountNumber}"
+                        android:textAppearance="@style/TextInput" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Space
+                    android:id="@+id/spaceBetweenBankAccountAndEducation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dimen_8"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tilBankAccountNumber" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilEducation"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelinePaddingRight"
+                    app:layout_constraintStart_toEndOf="@+id/guidelinePaddingLeft"
+                    app:layout_constraintTop_toBottomOf="@+id/spaceBetweenBankAccountAndEducation"
+                    app:errorTextAppearance="@style/ErrorTextInput"
+                    app:hintTextAppearance="@style/HintTextInput">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etEducation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hint_education"
+                        android:text="@{selfDataModel.education}"
+                        android:textAppearance="@style/TextInput" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Space
+                    android:id="@+id/spaceBetweenEducationAndDob"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dimen_8"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tilEducation" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilDob"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelinePaddingRight"
+                    app:layout_constraintStart_toEndOf="@+id/guidelinePaddingLeft"
+                    app:layout_constraintTop_toBottomOf="@+id/spaceBetweenEducationAndDob"
+                    app:errorTextAppearance="@style/ErrorTextInput"
+                    app:hintTextAppearance="@style/HintTextInput">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etDob"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hint_date_of_birth"
+                        android:text="@{selfDataModel.dateOfBirth}"
+                        android:textAppearance="@style/TextInput" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Space
+                    android:id="@+id/spaceBetweenDobAndDomicile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dimen_8"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tilDob" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilDomicile"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelinePaddingRight"
+                    app:layout_constraintStart_toEndOf="@+id/guidelinePaddingLeft"
+                    app:layout_constraintTop_toBottomOf="@+id/spaceBetweenDobAndDomicile"
+                    app:errorTextAppearance="@style/ErrorTextInput"
+                    app:hintTextAppearance="@style/HintTextInput">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etDomicile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:digits="@string/alpha_numeric"
+                        android:hint="@string/hint_domicile_address"
+                        android:inputType="textMultiLine"
+                        android:minLines="2"
+                        android:maxLength="100"
+                        android:maxLines="2"
+                        android:text="@{ktpDataModel.domicileAddress}"
+                        android:textAppearance="@style/TextInput" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Space
+                    android:id="@+id/spaceBetweenDomicileAndHousingType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dimen_8"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tilDomicile" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilHousingType"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelinePaddingRight"
+                    app:layout_constraintStart_toEndOf="@+id/guidelinePaddingLeft"
+                    app:layout_constraintTop_toBottomOf="@+id/spaceBetweenDomicileAndHousingType"
+                    app:errorTextAppearance="@style/ErrorTextInput"
+                    app:hintTextAppearance="@style/HintTextInput">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etHousingType"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hint_housing_type"
+                        android:text="@{ktpDataModel.houseType}"
+                        android:textAppearance="@style/TextInput" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Space
+                    android:id="@+id/spaceBetweenHousingTypeAndHouseNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dimen_8"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tilHousingType" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilHouseNumber"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelinePaddingRight"
+                    app:layout_constraintStart_toEndOf="@+id/guidelinePaddingLeft"
+                    app:layout_constraintTop_toBottomOf="@+id/spaceBetweenHousingTypeAndHouseNumber"
+                    app:errorTextAppearance="@style/ErrorTextInput"
+                    app:hintTextAppearance="@style/HintTextInput">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etHouseNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:digits="@string/alpha_numeric"
+                        android:hint="@string/hint_house_number"
+                        android:imeOptions="actionDone"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="@{ktpDataModel.houseNumber}"
+                        android:textAppearance="@style/TextInput" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Space
+                    android:id="@+id/spaceBetweenHouseNumberAndProvince"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dimen_8"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tilHouseNumber" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilProvince"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelinePaddingRight"
+                    app:layout_constraintStart_toEndOf="@+id/guidelinePaddingLeft"
+                    app:layout_constraintTop_toBottomOf="@+id/spaceBetweenHouseNumberAndProvince"
+                    app:errorTextAppearance="@style/ErrorTextInput"
+                    app:hintTextAppearance="@style/HintTextInput">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etProvince"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hint_province"
+                        android:text="@{ktpDataModel.province}"
+                        android:textAppearance="@style/TextInput" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelinePaddingLeft"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="@dimen/dimen_16" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelinePaddingRight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_end="@dimen/dimen_16" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+        <Space
+            android:id="@+id/spaceBetweenScrollViewAndButton"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dimen_8"
+            app:layout_constraintBottom_toTopOf="@+id/btnSubmit"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSubmit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_shape_button_blue"
+            android:text="@string/submit"
+            android:textAppearance="@style/SubmitButton"
+            app:layout_constraintBottom_toTopOf="@+id/spaceMainBottomPadding"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineMainPaddingRight"
+            app:layout_constraintStart_toEndOf="@+id/guidelineMainPaddingLeft" />
+
+        <Space
+            android:id="@+id/spaceMainBottomPadding"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dimen_12"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineMainPaddingLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/dimen_16" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineMainPaddingRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/dimen_16" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

@@ -6,6 +6,7 @@ import com.damai.amarbankregistration.MainViewModel
 import com.damai.amarbankregistration.R
 import com.damai.amarbankregistration.databinding.FragmentDataReviewBinding
 import com.damai.base.BaseFragment
+import com.damai.base.extension.setCustomOnClickListener
 import javax.inject.Inject
 
 /**
@@ -26,10 +27,18 @@ class DataReviewFragment : BaseFragment<FragmentDataReviewBinding, MainViewModel
     }
 
     override fun FragmentDataReviewBinding.viewInitialization() {
-        // TODO("Not yet implemented")
+        viewModel.selfDataModel?.let { selfData ->
+            binding.selfDataModel = selfData
+        }
+        viewModel.ktpDataModel?.let { ktpData ->
+            binding.ktpDataModel = ktpData
+        }
+        binding.executePendingBindings()
     }
 
-    override fun FragmentDataReviewBinding.onPreparationFinished() {
-        // TODO("Not yet implemented")
+    override fun FragmentDataReviewBinding.setupListeners() {
+        btnSubmit.setCustomOnClickListener {
+            viewModel.processRegistrationData()
+        }
     }
 }
