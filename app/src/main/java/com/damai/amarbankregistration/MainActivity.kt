@@ -156,6 +156,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     }
 
     private fun handleBackPressed() {
+        if (viewModel.isBackDisabled) return
         with(supportFragmentManager) {
             if (backStackEntryCount == 0) {
                 finish()

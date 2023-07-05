@@ -43,6 +43,7 @@ class MainViewModel @Inject constructor(
     //endregion `Live Data Variables`
 
     //region Data Variables
+    var isBackDisabled = false
     var selfDataModel: SelfDataModel? = null
     var ktpDataModel: KtpDataModel? = null
     //endregion `Data Variables`

@@ -8,7 +8,6 @@ import com.damai.base.BaseFragment
 import com.damai.base.extension.observe
 import com.damai.base.extension.setCustomOnClickListener
 import com.damai.base.extension.showToastMessage
-import com.github.leandroborgesferreira.loadingbutton.animatedDrawables.ProgressType
 import javax.inject.Inject
 
 /**
@@ -35,8 +34,6 @@ class DataReviewFragment : BaseFragment<FragmentDataReviewBinding, MainViewModel
             ktpDataModel = ktpData
         }
         executePendingBindings()
-
-        btnSubmit.progressType = ProgressType.INDETERMINATE
     }
 
     override fun FragmentDataReviewBinding.setupListeners() {
@@ -44,6 +41,7 @@ class DataReviewFragment : BaseFragment<FragmentDataReviewBinding, MainViewModel
             btnSubmit.startAnimation {
                 viewModel.processRegistrationData()
             }
+            viewModel.isBackDisabled = true
         }
     }
 
