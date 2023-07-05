@@ -5,7 +5,10 @@ import com.damai.amarbankregistration.MainViewModel
 import com.damai.amarbankregistration.R
 import com.damai.amarbankregistration.databinding.FragmentDataReviewBinding
 import com.damai.base.BaseFragment
+import com.damai.base.extension.observe
 import com.damai.base.extension.setCustomOnClickListener
+import com.damai.base.extension.showToastMessage
+import com.github.leandroborgesferreira.loadingbutton.animatedDrawables.ProgressType
 import javax.inject.Inject
 
 /**
@@ -26,17 +29,34 @@ class DataReviewFragment : BaseFragment<FragmentDataReviewBinding, MainViewModel
 
     override fun FragmentDataReviewBinding.viewInitialization() {
         viewModel.selfDataModel?.let { selfData ->
-            binding.selfDataModel = selfData
+            selfDataModel = selfData
         }
         viewModel.ktpDataModel?.let { ktpData ->
-            binding.ktpDataModel = ktpData
+            ktpDataModel = ktpData
         }
-        binding.executePendingBindings()
+        executePendingBindings()
+
+        btnSubmit.progressType = ProgressType.INDETERMINATE
     }
 
     override fun FragmentDataReviewBinding.setupListeners() {
         btnSubmit.setCustomOnClickListener {
-            viewModel.processRegistrationData()
+            btnSubmit.startAnimation {
+                viewModel.processRegistrationData()
+            }
+        }
+    }
+
+    override fun FragmentDataReviewBinding.setupObservers() {
+        observe(viewModel.successRegisterData) { isSuccess ->
+            if (isSuccess) {
+                requireContext().showToastMessage(message = getString(R.string.successfully_submit))
+                btnSubmit.revertAnimation {
+                    btnSubmit.text = getString(R.string.thank_you)
+                    btnSubmit.isEnabled = false
+                    viewModel.proceedToFinishActivity()
+                }
+            }
         }
     }
 }

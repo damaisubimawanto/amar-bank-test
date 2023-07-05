@@ -310,16 +310,21 @@
             app:layout_constraintBottom_toTopOf="@+id/btnSubmit"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
             android:id="@+id/btnSubmit"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/custom_shape_button_blue"
+            android:layout_height="@dimen/dimen_50"
+            android:background="@drawable/selector_shape_button_blue"
             android:text="@string/submit"
             android:textAppearance="@style/SubmitButton"
+            app:finalCornerAngle="@dimen/dimen_50"
+            app:initialCornerAngle="@dimen/dimen_10"
             app:layout_constraintBottom_toTopOf="@+id/spaceMainBottomPadding"
             app:layout_constraintEnd_toStartOf="@+id/guidelineMainPaddingRight"
-            app:layout_constraintStart_toEndOf="@+id/guidelineMainPaddingLeft" />
+            app:layout_constraintStart_toEndOf="@+id/guidelineMainPaddingLeft"
+            app:spinning_bar_color="#FF000000"
+            app:spinning_bar_padding="@dimen/dimen_4"
+            app:spinning_bar_width="@dimen/dimen_12" />
 
         <Space
             android:id="@+id/spaceMainBottomPadding"

@@ -2,6 +2,8 @@
     <string name="app_name">AmarBankRegistration</string>
     <string name="title">Registration</string>
     <string name="submit">Submit</string>
+    <string name="successfully_submit">Registration is completed</string>
+    <string name="thank_you">Thank You!</string>
     
     <string name="step_account">Account</string>
     <string name="step_address">Address</string>

@@ -93,10 +93,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
             multiStepsAdapter.setData(newDataList = newDataList)
         }
 
-        observe(viewModel.successRegisterData) { isSuccess ->
-            if (isSuccess) {
-                finish()
-            }
+        observe(viewModel.finishActivityLiveData) {
+            finish()
         }
     }
 

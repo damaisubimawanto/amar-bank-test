@@ -48,5 +48,7 @@ dependencies {
     implementation project(':data')
     implementation project(':domain')
 
+    implementation 'com.github.leandroborgesferreira:loading-button-android:2.3.0'
+
     kapt dagger.compiler
 }

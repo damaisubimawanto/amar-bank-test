@@ -35,6 +35,9 @@ class MainViewModel @Inject constructor(
     private val _successRegisterData = MutableLiveData(false)
     val successRegisterData = _successRegisterData.asLiveData()
 
+    private val _finishActivityLiveData = MutableLiveData<Unit>()
+    val finishActivityLiveData = _finishActivityLiveData.asLiveData()
+
     private val _provinceListLiveData = MutableLiveData<List<String>>()
     val provinceListLiveData = _provinceListLiveData.asLiveData()
     //endregion `Live Data Variables`
@@ -73,6 +76,13 @@ class MainViewModel @Inject constructor(
             /* Simulation for hitting to API. */
             delay(2_000L)
             _successRegisterData.postValue(true)
+        }
+    }
+
+    fun proceedToFinishActivity() {
+        viewModelScope.launch(dispatcher.main()) {
+            delay(1_500L)
+            _finishActivityLiveData.postValue(Unit)
         }
     }
     //endregion `Public Functions`
