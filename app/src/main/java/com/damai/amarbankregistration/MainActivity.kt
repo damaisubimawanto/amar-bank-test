@@ -1,6 +1,5 @@
 package com.damai.amarbankregistration
 
-import android.os.Bundle
 import androidx.activity.addCallback
 import com.damai.amarbankregistration.application.MyApplication
 import com.damai.amarbankregistration.dagger.RegisterComponent
@@ -25,12 +24,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     @Inject
     override lateinit var viewModel: MainViewModel
     //endregion `Variables`
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        initFirstPage()
-        viewModel.getProvinceList()
-    }
 
     override fun setupDaggerInjection() {
         registerComponent = (applicationContext as MyApplication).appComponent
@@ -74,6 +67,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                 finish()
             }
         }
+    }
+
+    override fun ActivityMainBinding.onPreparationFinished() {
+        initFirstPage()
+        viewModel.getProvinceList()
     }
 
     //region Private Functions
