@@ -22,6 +22,7 @@ abstract class BaseActivity<VB: ViewDataBinding, VM: ViewModel> : AppCompatActiv
         setupDaggerInjection()
         super.onCreate(savedInstanceState)
         _binding = DataBindingUtil.setContentView(this, layoutResource)
+        binding.viewInitialization()
         binding.setupListeners()
         binding.setupObservers()
         binding.onPreparationFinished()
@@ -34,6 +35,8 @@ abstract class BaseActivity<VB: ViewDataBinding, VM: ViewModel> : AppCompatActiv
 
     //region Optional implementation
     open fun setupDaggerInjection() {}
+
+    open fun VB.viewInitialization() {}
 
     open fun VB.setupListeners() {}
 

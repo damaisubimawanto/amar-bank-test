@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">AmarBankRegistration</string>
+    <string name="title">Registration</string>
     <string name="submit">Submit</string>
+    
+    <string name="step_account">Account</string>
+    <string name="step_address">Address</string>
+    <string name="step_review">Review</string>
     
     <string name="hint_national_id">National ID</string>
     <string name="hint_full_name">Full Name</string>

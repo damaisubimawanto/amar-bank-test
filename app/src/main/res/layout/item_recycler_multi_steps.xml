@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/rvIcon"
+            android:layout_width="@dimen/dimen_36"
+            android:layout_height="@dimen/dimen_36"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivIcon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:srcCompat="@drawable/ic_account" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivIconTinted"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                app:tint="@color/light_sky_blue"
+                tools:srcCompat="@drawable/ic_account" />
+
+        </RelativeLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/dimen_4"
+            android:textAppearance="@style/TextMultiSteps"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rvIcon"
+            tools:text="Self" />
+
+        <Space
+            android:id="@+id/spaceLeftIcon"
+            android:layout_width="@dimen/dimen_16"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@+id/rvIcon"
+            app:layout_constraintTop_toTopOf="@+id/rvIcon" />
+
+        <Space
+            android:id="@+id/spaceRightIcon"
+            android:layout_width="@dimen/dimen_16"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/rvIcon"
+            app:layout_constraintTop_toTopOf="@+id/rvIcon" />
+
+        <View
+            android:id="@+id/viewConnectorLineLeft"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dimen_2"
+            android:background="@color/light_blue"
+            app:layout_constraintBottom_toBottomOf="@+id/rvIcon"
+            app:layout_constraintEnd_toStartOf="@+id/spaceLeftIcon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rvIcon" />
+
+        <View
+            android:id="@+id/viewConnectorLineRight"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dimen_2"
+            android:background="@color/light_blue"
+            app:layout_constraintBottom_toBottomOf="@+id/rvIcon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/spaceRightIcon"
+            app:layout_constraintTop_toTopOf="@+id/rvIcon" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

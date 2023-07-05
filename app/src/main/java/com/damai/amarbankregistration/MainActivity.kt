@@ -1,6 +1,7 @@
 package com.damai.amarbankregistration
 
 import androidx.activity.addCallback
+import com.damai.amarbankregistration.adapter.MultiStepsAdapter
 import com.damai.amarbankregistration.application.MyApplication
 import com.damai.amarbankregistration.dagger.RegisterComponent
 import com.damai.amarbankregistration.databinding.ActivityMainBinding
@@ -8,6 +9,7 @@ import com.damai.amarbankregistration.navigation.RegistrationFeatureApi
 import com.damai.base.BaseActivity
 import com.damai.base.extension.observe
 import com.damai.base.util.EventObserver
+import com.damai.domain.models.MultiStepsModel
 import com.damai.domain.models.RegistrationState
 import javax.inject.Inject
 
@@ -18,6 +20,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     lateinit var registrationFeatureApi: RegistrationFeatureApi
 
     lateinit var registerComponent: RegisterComponent
+
+    private lateinit var multiStepsAdapter: MultiStepsAdapter
 
     override val layoutResource: Int = R.layout.activity_main
 
@@ -30,6 +34,14 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
             .registerComponent()
             .create()
         registerComponent.inject(activity = this)
+    }
+
+    override fun ActivityMainBinding.viewInitialization() {
+        with(rvMultiSteps) {
+            multiStepsAdapter = MultiStepsAdapter(dataList = listOf())
+            adapter = multiStepsAdapter
+            generateMultiStepsData().let(multiStepsAdapter::setData)
+        }
     }
 
     override fun ActivityMainBinding.setupListeners() {
@@ -49,17 +61,36 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         })
 
         observe(viewModel.state) {
-            when (it) {
+            val newDataList = when (it) {
                 RegistrationState.SelfData -> {
-
+                    multiStepsAdapter.getData().map { multiStepModel ->
+                        multiStepModel.copy(
+                            isSelected = when (multiStepModel.state) {
+                                RegistrationState.SelfData -> true
+                                else -> false
+                            }
+                        )
+                    }
                 }
                 RegistrationState.KtpData -> {
-
+                    multiStepsAdapter.getData().map { multiStepModel ->
+                        multiStepModel.copy(
+                            isSelected = when (multiStepModel.state) {
+                                RegistrationState.SelfData, RegistrationState.KtpData -> true
+                                else -> false
+                            }
+                        )
+                    }
                 }
                 RegistrationState.DataReview -> {
-
+                    multiStepsAdapter.getData().map { multiStepModel ->
+                        multiStepModel.copy(
+                            isSelected = true
+                        )
+                    }
                 }
             }
+            multiStepsAdapter.setData(newDataList = newDataList)
         }
 
         observe(viewModel.successRegisterData) { isSuccess ->
@@ -75,6 +106,33 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     }
 
     //region Private Functions
+    private fun generateMultiStepsData(): List<MultiStepsModel> {
+        val selfStepData = MultiStepsModel(
+            svgIconRes = R.drawable.ic_account,
+            name = getString(R.string.step_account),
+            state = RegistrationState.SelfData,
+            isSelected = true
+        )
+        val ktpStepData = MultiStepsModel(
+            svgIconRes = R.drawable.ic_house,
+            name = getString(R.string.step_address),
+            state = RegistrationState.KtpData,
+            isSelected = false
+        )
+        val reviewStepData = MultiStepsModel(
+            svgIconRes = R.drawable.ic_reference,
+            name = getString(R.string.step_review),
+            state = RegistrationState.DataReview,
+            isSelected = false
+        )
+        val dataList = mutableListOf<MultiStepsModel>().apply {
+            add(selfStepData)
+            add(ktpStepData)
+            add(reviewStepData)
+        }
+        return dataList.toList()
+    }
+
     private fun initFirstPage() {
         registrationFeatureApi.navigateToSelfDataFragment(
             fragmentActivity = this,

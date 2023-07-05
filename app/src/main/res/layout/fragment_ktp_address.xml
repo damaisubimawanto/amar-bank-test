@@ -5,6 +5,10 @@
     <data>
 
         <variable
+            name="ktpDataModel"
+            type="com.damai.domain.models.KtpDataModel" />
+
+        <variable
             name="vm"
             type="com.damai.amarbankregistration.MainViewModel" />
 
@@ -14,7 +18,8 @@
         android:id="@+id/svMainView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:paddingTop="@dimen/dimen_12">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -40,6 +45,7 @@
                     android:minLines="2"
                     android:maxLength="100"
                     android:maxLines="2"
+                    android:text="@{ktpDataModel.domicileAddress}"
                     android:textAppearance="@style/TextInput" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -66,6 +72,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_housing_type"
+                    android:text="@{ktpDataModel.houseType}"
                     android:textAppearance="@style/TextInput" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -97,6 +104,7 @@
                     android:inputType="text"
                     android:maxLines="1"
                     android:singleLine="true"
+                    android:text="@{ktpDataModel.houseNumber}"
                     android:textAppearance="@style/TextInput" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -123,6 +131,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_province"
+                    android:text="@{ktpDataModel.province}"
                     android:textAppearance="@style/TextInput" />
 
             </com.google.android.material.textfield.TextInputLayout>

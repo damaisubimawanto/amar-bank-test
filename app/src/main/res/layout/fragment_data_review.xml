@@ -21,7 +21,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:paddingTop="@dimen/dimen_12">
 
         <ScrollView
             android:layout_width="0dp"
@@ -50,13 +51,7 @@
                         android:id="@+id/etNationalId"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:digits="@string/numeric_only"
                         android:hint="@string/hint_national_id"
-                        android:imeOptions="actionNext"
-                        android:inputType="number"
-                        android:maxLength="16"
-                        android:maxLines="1"
-                        android:nextFocusDown="@id/etFullName"
                         android:text="@{selfDataModel.nationalId}"
                         android:textAppearance="@style/TextInput" />
 
@@ -84,14 +79,7 @@
                         android:id="@+id/etFullName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:digits="@string/character_only"
                         android:hint="@string/hint_full_name"
-                        android:imeOptions="actionNext"
-                        android:inputType="textCapSentences"
-                        android:maxLength="10"
-                        android:maxLines="1"
-                        android:nextFocusDown="@id/etBankAcountNumber"
-                        android:singleLine="true"
                         android:text="@{selfDataModel.fullName}"
                         android:textAppearance="@style/TextInput" />
 
@@ -119,12 +107,7 @@
                         android:id="@+id/etBankAcountNumber"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:digits="@string/numeric_only"
                         android:hint="@string/hint_bank_account_number"
-                        android:imeOptions="actionDone"
-                        android:inputType="number"
-                        android:maxLength="8"
-                        android:maxLines="1"
                         android:text="@{selfDataModel.bankAccountNumber}"
                         android:textAppearance="@style/TextInput" />
 
@@ -208,7 +191,6 @@
                         android:id="@+id/etDomicile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:digits="@string/alpha_numeric"
                         android:hint="@string/hint_domicile_address"
                         android:inputType="textMultiLine"
                         android:minLines="2"
@@ -269,12 +251,7 @@
                         android:id="@+id/etHouseNumber"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:digits="@string/alpha_numeric"
                         android:hint="@string/hint_house_number"
-                        android:imeOptions="actionDone"
-                        android:inputType="text"
-                        android:maxLines="1"
-                        android:singleLine="true"
                         android:text="@{ktpDataModel.houseNumber}"
                         android:textAppearance="@style/TextInput" />
 
