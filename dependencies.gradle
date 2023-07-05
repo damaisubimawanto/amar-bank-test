@@ -18,15 +18,30 @@ ext {
             compiler                            : 'com.google.dagger:dagger-compiler:2.46.1'
     ]
 
-    junit = [
-            core                                : 'junit:junit:4.13.2',
-            espresso                            : 'androidx.test.espresso:espresso-core:3.5.1',
-            extension                           : 'androidx.test.ext:junit:1.1.5'
-    ]
-
     squareup = [
             okhttp3                             : 'com.squareup.okhttp3:logging-interceptor:4.9.0',
             retrofit2                           : 'com.squareup.retrofit2:retrofit:2.9.0',
             retrofit_gson_converter             : 'com.squareup.retrofit2:converter-gson:2.9.0'
+    ]
+
+    test_library = [
+            androidx_core_test                  : 'androidx.arch.core:core-testing:2.1.0',
+            androidx_test_espresso              : 'androidx.test.espresso:espresso-core:3.5.1',
+            androidx_test_extension             : 'androidx.test.ext:junit:1.1.5',
+            androidx_test_extension_ktx         : 'androidx.test.ext:junit-ktx:1.1.5',
+            androidx_test_runner                : 'androidx.test:runner:1.2.0',
+            assertj_core                        : 'org.assertj:assertj-core:3.24.2',
+            junit_core                          : 'junit:junit:4.13.2',
+            junit_jupiter                       : 'org.junit.jupiter:junit-jupiter:5.7.2',
+            junit_vintage_engine                : 'org.junit.vintage:junit-vintage-engine:5.9.3',
+            kotlinx_coroutines_test             : 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.2',
+            livedata_test                       : 'com.jraska.livedata:testing-ktx:1.2.0',
+            mock                                : 'io.mockk:mockk:1.12.3',
+            mock_webserver                      : 'com.squareup.okhttp3:mockwebserver:4.10.0',
+            robolectric                         : 'org.robolectric:robolectric:4.10.3'
+    ]
+
+    third_party = [
+            loading_button_android              : 'com.github.leandroborgesferreira:loading-button-android:2.3.0'
     ]
 }

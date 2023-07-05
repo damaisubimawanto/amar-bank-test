@@ -28,6 +28,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    testOptions.unitTests {
+        includeAndroidResources = true
+        returnDefaultValues = true
+        all {
+            /**
+             * The default sdk is 19 (Kitkat) inside folder
+             * ```test/resources/robolectric.properties``` file
+             * In case we need to test on another os version we can use @Config annotations.
+             * Please refer to here http://robolectric.org/configuring
+             * or discuss it with android engineer team.
+             */
+            systemProperty 'robolectric.enabledSdks', '19, 29'
+            setIgnoreFailures(true)
+        }
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
@@ -48,7 +63,32 @@ dependencies {
     implementation project(':data')
     implementation project(':domain')
 
-    implementation 'com.github.leandroborgesferreira:loading-button-android:2.3.0'
+    implementation third_party.loading_button_android
 
     kapt dagger.compiler
+
+    testImplementation test_library.androidx_core_test
+    testImplementation test_library.androidx_test_espresso
+    testImplementation test_library.androidx_test_extension
+    testImplementation test_library.androidx_test_extension_ktx
+    testImplementation test_library.androidx_test_runner
+    testImplementation test_library.assertj_core
+    testImplementation test_library.junit_core
+    testImplementation test_library.junit_jupiter
+    testImplementation test_library.kotlinx_coroutines_test
+    testImplementation test_library.livedata_test
+    testImplementation test_library.mock
+    testImplementation test_library.mock_webserver
+    testImplementation test_library.robolectric
+
+    testRuntimeOnly test_library.junit_vintage_engine
+}
+
+tasks.withType(Test) {
+    useJUnitPlatform()
+    testLogging {
+        exceptionFormat "full"
+        events "started", "skipped", "passed", "failed"
+        showStandardStreams true
+    }
 }

@@ -48,7 +48,6 @@ dependencies {
     api squareup.retrofit2
     api squareup.retrofit_gson_converter
 
-    testApi junit.core
-    androidTestApi junit.espresso
-    androidTestApi junit.extension
+    androidTestApi test_library.androidx_test_espresso
+    androidTestApi test_library.androidx_test_extension
 }
