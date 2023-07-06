@@ -154,4 +154,28 @@ class MainViewModelTest {
             )
         }
     }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    @Test
+    fun `get province list but connection error should return resource error`() = runTest {
+        val response: Response<ProvinceResponse> = mockk()
+        val flowResponse = flow<Resource<ProvinceListModel>> {
+            emit(Resource.Error(""))
+        }
+
+        every { response.isSuccessful } returns false
+        every { response.code() } returns 500
+        every { runBlocking { provinceUseCase() } } returns flowResponse
+        every { mainRepository.getProvinceList() } returns flowResponse
+
+        provinceUseCase().collectLatest {
+            assertTrue(it is Resource.Error)
+
+            confirmVerified(
+                mainRepository,
+                provinceListObserver,
+                response
+            )
+        }
+    }
 }
