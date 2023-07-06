@@ -32,6 +32,8 @@ import org.junit.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.junit.runner.RunWith
 import retrofit2.Response
+import java.util.concurrent.CountDownLatch
+import java.util.concurrent.TimeUnit
 
 /**
  * Created by damai007 on 05/July/2023
@@ -45,7 +47,7 @@ class MainViewModelTest {
     val coroutineRule = CoroutineTestRule()
 
     private val provinceUseCase = mockk<ProvinceUseCase>()
-    private val mainRepositoty = mockk<MainRepository>()
+    private val mainRepository = mockk<MainRepository>()
 
     private val viewModel = MainViewModel(
         provinceUseCase = provinceUseCase,
@@ -106,9 +108,24 @@ class MainViewModelTest {
         confirmVerified(nextPageTriggerObserver)
     }
 
+    @Test
+    fun `process to finish activity should update live data`() {
+        val latch = CountDownLatch(1)
+        val delayedFinishObserver = Observer<Unit> {
+            coVerify(exactly = 1) {
+                finishActivityObserver.onChanged(any())
+            }
+            confirmVerified(finishActivityObserver)
+            latch.countDown()
+        }
+        viewModel.finishActivityLiveData.observeForever(delayedFinishObserver)
+        viewModel.processRegistrationData()
+        latch.await(2, TimeUnit.SECONDS)
+    }
+
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
-    fun `get province list should update live data`() = runTest {
+    fun `get province list should return resource success`() = runTest {
         val response: Response<ProvinceResponse> = mockk()
         val body: ProvinceResponse = mockk()
         val data: List<ProvinceResponse.ProvinceDetail> = mockk()
@@ -125,10 +142,16 @@ class MainViewModelTest {
         every { body.data } returns data
         every { bodyConverted.data } returns dataConverted
         every { runBlocking { provinceUseCase() } } returns flowResponse
-        every { mainRepositoty.getProvinceList() } returns flowResponse
+        every { mainRepository.getProvinceList() } returns flowResponse
 
         provinceUseCase().collectLatest {
             assertTrue(it is Resource.Success)
+
+            confirmVerified(
+                mainRepository,
+                provinceListObserver,
+                response
+            )
         }
     }
 }
