@@ -38,6 +38,7 @@ class SimpleDateUtil {
     }
 
     enum class DateFormat(val pattern: String) {
-        DD_MM_YYYY("dd-MM-yyyy")
+        DD_MM_YYYY("dd-MM-yyyy"),
+        YYYY_MM_DD("yyyy-MM-dd")
     }
 }

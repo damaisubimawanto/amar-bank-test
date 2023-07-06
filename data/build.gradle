@@ -32,4 +32,8 @@ dependencies {
 
     implementation project(':base')
     implementation project(':domain')
+
+    testImplementation test_library.androidx_core_test
+    testImplementation test_library.androidx_test_espresso
+    testImplementation test_library.androidx_test_extension
 }
